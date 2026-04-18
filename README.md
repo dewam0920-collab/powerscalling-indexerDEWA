@@ -1,0 +1,2 @@
+# powerscalling-indexerDEWA
+belom ada
