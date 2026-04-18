@@ -1,156 +1,63 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEWA INDEXER - MEGA UPDATE</title>
+    <title>dewa wiki - direktori karakter</title>
     <style>
-        :root { --blue: #58a6ff; --green: #238636; --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; padding: 15px; margin: 0; }
-        .container { width: 100%; max-width: 900px; margin: auto; }
-        h1 { color: var(--blue); text-align: center; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-        .sub { text-align: center; color: #8b949e; font-size: 12px; margin-bottom: 25px; }
-        .search-box { width: 100%; display: flex; gap: 10px; margin-bottom: 20px; }
-        input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: white; outline: none; }
-        button { padding: 12px 20px; background: var(--green); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        
-        .wiki-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; animation: fadeIn 0.4s ease; }
-        .header { background: linear-gradient(45deg, #1f6feb, #238636); padding: 20px; text-align: center; }
-        .content { padding: 20px; }
-        .section { margin-bottom: 20px; border-left: 4px solid var(--blue); padding-left: 15px; }
-        .label { font-weight: bold; color: var(--blue); display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
-        .hax-grid { background: #010409; padding: 15px; border-radius: 8px; font-size: 13px; line-height: 1.6; }
-        .link-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding: 15px; background: #0d1117; border-radius: 8px; }
-        .link-btn { background: #21262d; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border); color: var(--blue); font-size: 11px; text-decoration: none; }
-        .tier-badge { background: #f0883e; color: black; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 13px; display: inline-block; margin-top: 10px; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        body { background-color: #0d1117; color: #c9d1d9; font-family: sans-serif; margin: 0; padding: 20px; }
+        h1 { color: #58a6ff; text-align: center; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
+        .abjad-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0; background: #161b22; padding: 15px; border-radius: 8px; border: 1px solid #30363d; }
+        .abjad-nav a { color: #58a6ff; text-decoration: none; font-weight: bold; font-size: 18px; padding: 5px 15px; background: #21262d; border-radius: 4px; }
+        .abjad-nav a:hover { background: #58a6ff; color: #0d1117; }
+        .char-list { max-width: 800px; margin: auto; background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; margin-bottom: 20px; }
+        .char-list h2 { color: #238636; border-bottom: 1px solid #30363d; padding-bottom: 5px; margin-top: 0; }
+        .char-list ul { list-style-type: none; padding: 0; }
+        .char-list li { margin: 12px 0; padding-left: 10px; border-left: 3px solid #58a6ff; }
+        .char-list a { color: #c9d1d9; text-decoration: none; font-size: 16px; font-weight: bold; }
+        .char-list a:hover { color: #58a6ff; text-decoration: underline; }
+        .kode-urut { color: #8b949e; font-size: 12px; margin-left: 5px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Dewa Power-Scaling Index</h1>
-    <p class="sub">V.2.0 - Verified Stats & SBA Rules</p>
-    <div class="search-box">
-        <input type="text" id="target" placeholder="Cari: Izana, Silver Surfer, Gojo...">
-        <button onclick="search()">RISET</button>
+    <h1>dewa wiki - power scaling index</h1>
+
+    <div class="abjad-nav">
+        <a href="#huruf-a">a</a>
+        <a href="#huruf-i">i</a>
+        <a href="#huruf-m">m</a>
+        <a href="#huruf-s">s</a>
     </div>
-    <div id="display"></div>
-</div>
 
-<script>
-const db = {
-    "makima": {
-        name: "Makima (The Control Devil)",
-        verse: "Chainsaw Man",
-        tier: "7-C | Up to 4-B with preparation",
-        summary: "Manifestasi ketakutan akan kontrol. Kekuatannya bergantung pada kontrak dan jumlah populasi yang ia kendalikan.",
-        sba: "Memulai dengan mengamati lawan; menggunakan Mind Control jika lawan dianggap inferior.",
-        inchar: "Manipulatif, tenang, tidak ragu mengorbankan warga Jepang demi keabadiannya.",
-        stats: { ap: "Town Level (Fisik) | Multi-City Block (Bang!)", speed: "Massively Hypersonic+", dura: "Multi-Continental via Contract." },
-        hax: ["Conceptual Erasure (via Pochita)", "Contractual Immortality (Tipe 8)", "Force Manipulation (Bang!)"],
-        refs: [{t: "Gun Devil Speed Calc", l: "https://vshypothesis.blogspot.com/2020/09/gun-devil-speed-calc.html"}]
-    },
-    "izana": {
-        name: "Izana Kurokawa (Tenjiku Boss)",
-        verse: "Tokyo Revengers (Street Tier)",
-        tier: "9-B (Wall Level)",
-        summary: "Pemimpin Tenjiku dengan kemampuan bela diri 'Sense' yang luar biasa. Salah satu dari sedikit orang yang bisa menandingi Mikey.",
-        sba: "Langsung menyerang dengan kombinasi serangan brutal dan teknis.",
-        inchar: "Mental tidak stabil, haus kekuasaan, bertarung dengan insting membunuh.",
-        stats: { ap: "Wall Level (Dapat menghancurkan beton/tulang dengan pukulan)", speed: "Superhuman (Bereaksi terhadap tendangan Mikey)", dura: "Wall Level" },
-        hax: ["Master Martial Artist", "Enhanced Senses (Instinctive Reaction)"],
-        refs: [{t: "Respect Thread Izana", l: "https://www.reddit.com/r/TokyoRevengers/comments/oyvaxz/respect_izana_kurokawa/"}]
-    },
-    "kakucho": {
-        name: "Kakucho (Hitto Kakucho)",
-        verse: "Tokyo Revengers",
-        tier: "9-B (Wall Level)",
-        summary: "Orang terkuat di Tenjiku setelah Izana. Memiliki kekuatan fisik murni yang sangat masif untuk ukuran manusia biasa.",
-        sba: "Bertarung sebagai brawler garis depan, mengandalkan kekuatan pukulan tunggal.",
-        inchar: "Setia, petarung yang jujur, sangat kuat dalam bertahan.",
-        stats: { ap: "Wall Level (Menghancurkan musuh dalam satu serangan)", speed: "Superhuman", dura: "Wall Level (Tahan dipukuli berkali-kali)" },
-        hax: ["Brawling Mastery", "Extreme Pain Tolerance"],
-        refs: [{t: "TR Wiki: Kakucho", l: "https://tokyorevengers.fandom.com/wiki/Kakucho"}]
-    },
-    "silver surfer": {
-        name: "Silver Surfer (Norrin Radd)",
-        verse: "Marvel Comics (Cosmic Entity)",
-        tier: "4-B (Solar System) to 2-C (Low Multiverse)",
-        summary: "Herald of Galactus yang memiliki Power Cosmic. Salah satu entitas paling serbaguna di Marvel Universe.",
-        sba: "Mencoba diplomasi dulu; jika gagal, menggunakan kontrol energi cosmic skala besar.",
-        inchar: "Pasifis, memiliki empati tinggi, tapi efisien jika harus bertarung.",
-        stats: { ap: "Solar System Level+ (Mampu menghancurkan planet dan bintang)", speed: "Massively FTL+ (Melintasi galaksi dalam hitungan detik)", dura: "Solar System Level (Tahan suhu bintang)" },
-        hax: ["Matter Manipulation", "Energy Absorption", "Cosmic Awareness", "Telepathy", "Time Manipulation (Minor)"],
-        refs: [{t: "Respect Silver Surfer (Reddit)", l: "https://www.reddit.com/r/respectthreads/comments/34rxrk/respect_the_silver_surfer_marvel/"}]
-    },
-    "gojo": {
-        name: "Gojo Satoru (The Honored One)",
-        verse: "Jujutsu Kaisen",
-        tier: "7-A (Mountain Level) | effectively Higher via Infinity",
-        summary: "Penyihir Jujutsu terkuat yang memiliki Limitless. Dunia bergeser keseimbangannya sejak ia lahir.",
-        sba: "Mengaktifkan Infinity secara pasif; menggunakan Blue/Red untuk kontrol jarak.",
-        inchar: "Sombong, jenius, sering bermain-main dengan lawan sebelum menggunakan Domain Expansion.",
-        stats: { ap: "Mountain Level (Hollow Purple)", speed: "Massively Hypersonic+ (Teleportasi instan)", dura: "City Level (Infinity membuat serangan lawan tidak pernah sampai)" },
-        hax: ["Infinity (Aporia Zeno logic)", "Unlimited Void (Mind Screw)", "Blue/Red/Purple (Spatial Manipulation)"],
-        refs: [{t: "Calc: Gojo's Speed", l: "https://vsbattles.fandom.com/wiki/User_blog:The_Calaca/Jujutsu_Kaisen:_Gojo_Satoru_Speed"}]
-    },
-    "anos": {
-        name: "Anos Voldigoad (Demon King of Tyranny)",
-        verse: "Maou Gakuin (High-Fantasy)",
-        tier: "2-A (Multiverse Level+) to Low 1-C",
-        summary: "Raja Iblis tirani yang bereinkarnasi. Memiliki pedang yang bisa menghancurkan logika dan takdir.",
-        sba: "Duduk tenang; membiarkan lawan menyerang lalu membalas dengan penghancuran konsep.",
-        inchar: "Sangat tenang, mutlak, tidak bisa mati oleh konsep kematian.",
-        stats: { ap: "Multiversal+ (Mampu menghancurkan ribuan dunia dengan mata)", speed: "Immeasurable (Bergerak melampaui konsep waktu)", dura: "Multiversal+" },
-        hax: ["Venuzdonoa (Logic/Concept Destruction)", "Acasic Records Immunity", "Resurrection (Instant)", "Death Manipulation"],
-        refs: [{t: "Anos Stats Deep Dive", l: "https://vsbattles.fandom.com/wiki/Anos_Voldigoad"}]
-    }
-};
+    <div class="char-list" id="huruf-a">
+        <h2>a</h2>
+        <ul>
+            <li><a href="anos.html">anos voldigoad</a> <span class="kode-urut">a1</span></li>
+            <li><a href="akuto.html">akuto sai</a> <span class="kode-urut">a2</span></li>
+        </ul>
+    </div>
 
-function search() {
-    const q = document.getElementById('target').value.toLowerCase().trim();
-    const area = document.getElementById('display');
-    if(db[q]) {
-        const d = db[q];
-        let haxHtml = d.hax.map(h => `• ${h}<br>`).join('');
-        let refHtml = d.refs.map(r => `<a href="${r.l}" target="_blank" class="link-btn">🔗 ${r.t}</a>`).join('');
-        area.innerHTML = `
-            <div class="wiki-card">
-                <div class="header">
-                    <h2 style="margin:0">${d.name}</h2>
-                    <span class="tier-badge">Tier: ${d.tier}</span>
-                </div>
-                <div class="content">
-                    <div class="section">
-                        <span class="label">Cosmology & Context</span>
-                        <p style="font-size:13px"><b>Verse:</b> ${d.verse}<br>${d.summary}</p>
-                    </div>
-                    <div class="section" style="background:#1c2128; padding:10px; border-radius:5px">
-                        <span class="label">Rules: SBA & In-Char</span>
-                        <p style="font-size:12px"><b>SBA:</b> ${d.sba}</p>
-                        <p style="font-size:12px"><b>Behavior:</b> ${d.inchar}</p>
-                    </div>
-                    <div class="section">
-                        <span class="label">Pure Stats (AP/Speed/Dura)</span>
-                        <p style="font-size:13px"><b>AP:</b> ${d.stats.ap}<br><b>Speed:</b> ${d.stats.speed}<br><b>Durability:</b> ${d.stats.dura}</p>
-                    </div>
-                    <div class="section">
-                        <span class="label">Abilities & Hax List</span>
-                        <div class="hax-grid">${haxHtml}</div>
-                    </div>
-                    <div class="link-bar">
-                        <span class="label" style="width:100%">Evidence & Scans:</span>
-                        ${refHtml}
-                    </div>
-                </div>
-            </div>
-        `;
-    } else {
-        area.innerHTML = "<p style='text-align:center; color:#f85149'>Data tidak ditemukan. Masukkan nama yang tepat!</p>";
-    }
-}
-</script>
+    <div class="char-list" id="huruf-i">
+        <h2>i</h2>
+        <ul>
+            <li><a href="izana.html">izana kurokawa</a> <span class="kode-urut">i1</span></li>
+        </ul>
+    </div>
+
+    <div class="char-list" id="huruf-m">
+        <h2>m</h2>
+        <ul>
+            <li><a href="makima.html">makima</a> <span class="kode-urut">m1</span></li>
+        </ul>
+    </div>
+
+    <div class="char-list" id="huruf-s">
+        <h2>s</h2>
+        <ul>
+            <li><a href="surfer.html">silver surfer</a> <span class="kode-urut">s1</span></li>
+        </ul>
+    </div>
+
 </body>
 </html>
