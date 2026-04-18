@@ -16,49 +16,29 @@
             margin: 0;
         }
         h1 { color: #58a6ff; margin-top: 50px; text-align: center; }
-        .search-container {
-            width: 100%;
-            max-width: 500px;
-            margin-top: 30px;
-        }
+        .search-container { width: 100%; max-width: 500px; margin-top: 30px; }
         input[type="text"] {
-            width: 100%;
-            padding: 12px 20px;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-            background-color: #0d1117;
-            color: white;
-            font-size: 16px;
-            box-sizing: border-box;
+            width: 100%; padding: 12px 20px; border-radius: 6px;
+            border: 1px solid #30363d; background-color: #0d1117; color: white;
+            font-size: 16px; box-sizing: border-box;
         }
         button {
-            width: 100%;
-            margin-top: 10px;
-            padding: 12px;
-            background-color: #238636;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
+            width: 100%; margin-top: 10px; padding: 12px;
+            background-color: #238636; color: white; border: none;
+            border-radius: 6px; font-weight: bold; cursor: pointer;
         }
         button:hover { background-color: #2ea043; }
-        .info {
-            width: 100%;
-            max-width: 500px;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #c9d1d9;
-        }
+        .info { width: 100%; max-width: 500px; margin-top: 20px; font-size: 14px; color: #c9d1d9; }
         .result-box {
-            background-color: #161b22;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #30363d;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background-color: #161b22; padding: 20px; border-radius: 8px;
+            border: 1px solid #30363d; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .result-box h3 { color: #58a6ff; margin-top: 0; text-transform: uppercase; }
         .error-msg { color: #f85149; text-align: center; font-weight: bold; }
+        /* Tambahan style untuk link agar terlihat rapi */
+        a { color: #58a6ff; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        ul { margin-top: 5px; padding-left: 20px; }
     </style>
 </head>
 <body>
@@ -71,51 +51,55 @@
         <button onclick="searchCharacter()">Cari Data</button>
     </div>
 
-    <div id="results" class="info">
-        </div>
+    <div id="results" class="info"></div>
 
     <script>
-        // INI ADALAH BANK DATA KAMU. 
-        // Kamu bisa menambah karakter baru di bawah ini nanti. Pastikan nama karakter pakai huruf kecil semua.
         const databaseKarakter = {
-            "akuto sai": {
-                tier: "1-A (Outerverse level)",
-                feats: "Mengubah realitas, melampaui konsep ruang dan waktu.",
-                calc: "Kecepatan Immeasurable (tak terukur)."
-            },
             "makima": {
                 tier: "7-C (Town level) secara fisik, Unknown dengan Hax",
-                feats: "Kontrol mental, transfer damage ke warga Jepang (Kontrak Perdana Menteri).",
-                calc: "Kecepatan Hypersonic+ (bereaksi terhadap serangan mendadak)."
+                feats: `
+                    <ul>
+                        <li><b>Kontrol Mental:</b> Dapat mengendalikan eksistensi yang ia anggap lebih rendah darinya.</li>
+                        <li><b>Immortality (Tipe 8):</b> Transfer fatal damage ke warga negara Jepang secara acak.</li>
+                        <li><b>Bang!:</b> Proyeksi energi kinetik tak kasat mata ke target.</li>
+                    </ul>
+                `,
+                calc: "Kecepatan Hypersonic+ (Mampu bereaksi terhadap tembakan Gun Devil sejauh 500km).",
+                link_rt: "<a href='https://www.reddit.com/r/respectthreads/comments/xkcf5l/respect_makima_chainsaw_man/' target='_blank'>[Baca Respect Thread Reddit]</a>",
+                link_bukti: "<a href='https://vsbattles.fandom.com/wiki/Makima' target='_blank'>[Lihat Profil Kalkulasi VS Battles]</a>"
             },
             "jin mori": {
                 tier: "Low 2-C (Universe level+)",
-                feats: "Mematikan alam semesta dengan tendangan, mengalahkan para dewa.",
-                calc: "Kecepatan MFTL+ (Jauh melebihi kecepatan cahaya)."
+                feats: "Mematikan alam semesta dengan tendangan.",
+                calc: "Kecepatan MFTL+.",
+                link_rt: "<a href='#' target='_blank'>[Belum Ada Link]</a>",
+                link_bukti: "<a href='#' target='_blank'>[Belum Ada Link]</a>"
             }
         };
 
         function searchCharacter() {
-            // Mengambil teks dari kolom pencarian dan mengubahnya jadi huruf kecil
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const results = document.getElementById('results');
             
             if(query !== "") {
-                // Mengecek apakah karakter yang dicari ada di dalam Bank Data
                 if(databaseKarakter[query]) {
                     const data = databaseKarakter[query];
-                    // Menampilkan hasil dalam bentuk kotak yang rapi
+                    // Menambahkan baris untuk Link dan Sumber ke tampilan web
                     results.innerHTML = `
                         <div class="result-box">
                             <h3>${query}</h3>
                             <p><b>Tier:</b> ${data.tier}</p>
                             <p><b>Feats Utama:</b> ${data.feats}</p>
                             <p><b>Hasil Calc:</b> ${data.calc}</p>
+                            <hr style="border-color: #30363d; margin: 15px 0;">
+                            <p><b>Sumber Referensi:</b><br>
+                                ${data.link_rt}<br>
+                                ${data.link_bukti}
+                            </p>
                         </div>
                     `;
                 } else {
-                    // Menampilkan pesan error jika karakter belum ada
-                    results.innerHTML = `<p class="error-msg">Karakter "${query}" belum tercatat di database. Silakan analisis dan tambahkan kodenya!</p>`;
+                    results.innerHTML = `<p class="error-msg">Karakter "${query}" belum tercatat. Silakan analisis dan tambahkan kodenya!</p>`;
                 }
             } else {
                 alert("Kotak pencarian tidak boleh kosong!");
