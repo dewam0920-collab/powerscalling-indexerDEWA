@@ -1,10 +1,84 @@
- <!DOCTYPE html>
-<html>
+
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <title>Dewa Power-Scaling Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dewa Power-Scaling Indexer</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 { color: #58a6ff; margin-top: 50px; }
+        .search-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 30px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            background-color: #0d1117;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            background-color: #238636;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover { background-color: #2ea043; }
+        .info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #8b949e;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <h1>Selamat Datang di Power-Scaling Indexer!</h1>
-  <p>Website ini khusus untuk mengumpulkan data feats, calc, dan diskusi tiering karakter.</p>
+
+    <h1>Power-Scaling Indexer</h1>
+    <p>Database Feats, Calc, & Tiering Karakter</p>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari karakter (contoh: Akuto Sai, Makima)...">
+        <button onclick="searchCharacter()">Cari Data</button>
+    </div>
+
+    <div id="results" class="info">
+        Hasil pencarian akan muncul di sini.
+    </div>
+
+    <script>
+        function searchCharacter() {
+            const query = document.getElementById('searchInput').value;
+            const results = document.getElementById('results');
+            
+            if(query) {
+                results.innerHTML = "Sedang mencari data untuk <b>" + query + "</b> di database...";
+                // Di sini nanti kita akan tanamkan logika mesin pencarinya
+            } else {
+                alert("Masukkan nama karakter dulu!");
+            }
+        }
+    </script>
+
 </body>
 </html>
