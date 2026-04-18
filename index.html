@@ -3,117 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dewa Power-Scaling Indexer</title>
+    <title>DEWA INDEXER - PRO EDITION</title>
     <style>
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            margin: 0;
-        }
-        h1 { color: #58a6ff; margin-top: 30px; }
-        .search-container { width: 100%; max-width: 600px; margin-bottom: 20px; }
-        input[type="text"] {
-            width: 100%; padding: 15px; border-radius: 8px;
-            border: 1px solid #30363d; background-color: #161b22; color: white;
-            font-size: 16px; outline: none;
-        }
-        button {
-            width: 100%; margin-top: 10px; padding: 12px;
-            background-color: #238636; color: white; border: none;
-            border-radius: 8px; font-weight: bold; cursor: pointer;
-        }
-        .result-container { width: 100%; max-width: 800px; }
-        .card {
-            background-color: #161b22; padding: 25px; border-radius: 12px;
-            border: 1px solid #30363d; line-height: 1.6;
-        }
-        .header-box { border-bottom: 2px solid #58a6ff; margin-bottom: 15px; padding-bottom: 10px; }
-        .tier-tag { background: #58a6ff; color: #0d1117; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
-        .section-title { color: #58a6ff; font-weight: bold; margin-top: 15px; display: block; border-left: 3px solid #238636; padding-left: 10px; }
-        .hax-list { background: #0d1117; padding: 10px; border-radius: 6px; font-size: 13px; margin-top: 5px; }
-        a { color: #58a6ff; text-decoration: none; font-size: 13px; }
-        a:hover { text-decoration: underline; }
-        hr { border: 0; border-top: 1px solid #30363d; margin: 20px 0; }
+        :root { --blue: #58a6ff; --green: #238636; --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; padding: 15px; margin: 0; }
+        .container { width: 100%; max-width: 900px; margin: auto; }
+        h1 { color: var(--blue); text-align: center; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }
+        .search-box { width: 100%; display: flex; gap: 10px; margin-bottom: 20px; }
+        input { flex: 1; padding: 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: white; }
+        button { padding: 12px 20px; background: var(--green); color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        
+        /* DATA LAYOUT */
+        .wiki-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; animation: fadeIn 0.5s; }
+        .header { background: linear-gradient(45deg, #1f6feb, #238636); padding: 20px; text-align: center; }
+        .content { padding: 20px; }
+        .section { margin-bottom: 25px; border-left: 4px solid var(--blue); padding-left: 15px; }
+        .label { font-weight: bold; color: var(--blue); display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 12px; }
+        .hax-grid { display: grid; grid-template-columns: 1fr; gap: 10px; background: #010409; padding: 15px; border-radius: 8px; font-size: 13px; }
+        
+        /* LINKS & TAGS */
+        .link-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; padding: 15px; background: #0d1117; border-radius: 8px; }
+        .link-btn { background: #21262d; padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border); color: var(--blue); font-size: 12px; text-decoration: none; }
+        .tier-badge { background: #f0883e; color: black; padding: 3px 10px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <h1>Power-Scaling Indexer</h1>
-    
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Ketik nama karakter...">
-        <button onclick="searchCharacter()">Cek Database Terlarang</button>
+<div class="container">
+    <h1>Dewa Power-Scaling Index</h1>
+    <div class="search-box">
+        <input type="text" id="target" placeholder="Nama Karakter (e.g. Makima)...">
+        <button onclick="search()">RISET</button>
     </div>
+    <div id="display"></div>
+</div>
 
-    <div id="results" class="result-container"></div>
+<script>
+const db = {
+    "makima": {
+        name: "Makima (The Control Devil)",
+        verse: "Chainsaw Man (Cosmology: World of Devils & Concepts)",
+        tier: "7-C | Up to 4-B with preparation",
+        summary: "Dominasi konsep kontrol. Makima adalah manifestasi dari ketakutan akan kendali. Dalam verse CSM, kekuatan iblis berbanding lurus dengan ketakutan manusia terhadap konsep tersebut.",
+        sba: "Standard Battle Assumptions: Makima memulai pertarungan dalam kondisi tenang, mengamati lawan. Jika lawan dianggap 'inferior', ia akan langsung menggunakan Mind Control. Jika lawan mengancam, ia menggunakan 'Bang!' atau ritual pengorbanan.",
+        inchar: "In-Character: Dingin, manipulatif, tidak ragu mengorbankan ribuan nyawa manusia. Tidak pernah panik meskipun tubuhnya hancur berkali-kali karena kontrak keabadiannya.",
+        stats: {
+            ap: "Town Level (Fisik) | Multi-City Block (Bang!) | Star Level (Hax/Preparation via Pochita erasure).",
+            speed: "Massively Hypersonic+ (Skala dari Gun Devil 20% yang menempuh 500km dalam hitungan detik).",
+            dura: "Town Level (Fisik) | Multi-Continental (Functional Immortality: Kerusakan dialihkan ke warga Jepang).",
+            range: "Universal via Animal Spy | Interdimensional via Hell gate."
+        },
+        hax: [
+            "<b>Conceptual Erasure:</b> Melalui Pochita, menghapus konsep dari masa lalu, sekarang, dan masa depan.",
+            "<b>Contractual Immortality:</b> Semua serangan mematikan berubah menjadi penyakit/kecelakaan bagi warga Jepang.",
+            "<b>Force Manipulation (Bang!):</b> Serangan kinetik tak terlihat yang bisa melempar target ke luar angkasa.",
+            "<b>Biological Manipulation:</b> Menggunakan ritual pengorbanan untuk meremukkan target dari jarak jauh hanya dengan nama.",
+            "<b>Dimension Banishment:</b> Membuka gerbang neraka melalui Hell Devil.",
+            "<b>Mind Manipulation:</b> Kontrol mutlak tanpa resistensi bagi siapapun yang ia anggap lebih rendah."
+        ],
+        refs: [
+            {t: "Ch. 76: Gun Devil Speed Feat", l: "https://vshypothesis.blogspot.com/2020/09/gun-devil-speed-calc.html"},
+            {t: "Reddit: Massive Makima Respect Thread", l: "https://www.reddit.com/r/respectthreads/comments/xkcf5l/respect_makima_chainsaw_man/"},
+            {t: "V-Battles: Makima Tiering Analysis", l: "https://vsbattles.fandom.com/wiki/Makima"},
+            {t: "Scan: Makima Ritual Kill (Ch. 27)", l: "https://imgur.com/a/makima-ritual-PZ5yO8B"}
+        ]
+    }
+};
 
-    <script>
-        const database = {
-            "makima": {
-                fullname: "Makima (Control Devil)",
-                verse: "Chainsaw Man",
-                tier: "7-C | Up to 4-B with preparation/hax",
-                ap: "Town Level (Secara fisik) | Multi-City Block via Bang! | Up to Multi-Continental (Via kontrak Perdana Menteri & mengendalikan Devil kuat).",
-                speed: "Massively Hypersonic+ (Reaksi terhadap Gun Devil yang menempuh 500km dalam hitungan detik).",
-                durability: "Town Level (Secara fisik) | Multi-Continental (Via transfer kematian ke warga Jepang).",
-                hax: `
-                    <div class="hax-list">
-                        • <b>Conceptual Manipulation:</b> Menghapus konsep melalui Chainsaw Man.<br>
-                        • <b>Mind Control:</b> Kontrol mutlak atas siapapun yang dianggap "inferior".<br>
-                        • <b>Teleportasi:</b> Melalui kumpulan tikus/binatang kecil.<br>
-                        • <b>Immortality Tipe 4 & 8:</b> Bergantung pada nyawa populasi Jepang.<br>
-                        • <b>Banishment:</b> Mengirim target ke Neraka secara instan.<br>
-                        • <b>Remote Attack:</b> Ritual penghancuran target dari jarak jauh hanya dengan nama.
+function search() {
+    const q = document.getElementById('target').value.toLowerCase().trim();
+    const area = document.getElementById('display');
+    if(db[q]) {
+        const d = db[q];
+        let haxHtml = d.hax.map(h => `<div>${h}</div>`).join('');
+        let refHtml = d.refs.map(r => `<a href="${r.l}" target="_blank" class="link-btn">🔗 ${r.t}</a>`).join('');
+        
+        area.innerHTML = `
+            <div class="wiki-card">
+                <div class="header">
+                    <h2 style="margin:0">${d.name}</h2>
+                    <span class="tier-badge">Tier: ${d.tier}</span>
+                </div>
+                <div class="content">
+                    <div class="section">
+                        <span class="label">Verse Context</span>
+                        <p style="font-size:14px">${d.verse}<br><br>${d.summary}</p>
                     </div>
-                `,
-                links: `
-                    <a href="https://www.reddit.com/r/respectthreads/comments/xkcf5l/respect_makima_chainsaw_man/" target="_blank">📄 Respect Thread (Lengkap)</a> | 
-                    <a href="https://vsbattles.fandom.com/wiki/User_blog:The_Calaca/Chainsaw_Man:_Gun_Devil_Speed" target="_blank">📊 Calc Kecepatan Gun Devil</a>
-                `
-            }
-            // Karakter lain akan kita tambahkan di bawah sini nanti
-        };
-
-        function searchCharacter() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            const results = document.getElementById('results');
-            
-            if(database[query]) {
-                const d = database[query];
-                results.innerHTML = `
-                    <div class="card">
-                        <div class="header-box">
-                            <h2 style="margin:0">${d.fullname}</h2>
-                            <small>Verse: ${d.verse}</small>
-                        </div>
-                        <p><span class="tier-tag">Tier: ${d.tier}</span></p>
-                        
-                        <span class="section-title">Attack Potency (AP)</span>
-                        <p style="font-size: 14px;">${d.ap}</p>
-
-                        <span class="section-title">Speed & Reaksi</span>
-                        <p style="font-size: 14px;">${d.speed}</p>
-
-                        <span class="section-title">Durability (DP)</span>
-                        <p style="font-size: 14px;">${d.durability}</p>
-
-                        <span class="section-title">Abilities & Hax</span>
-                        ${d.hax}
-
-                        <hr>
-                        <span class="section-title">Referensi Data & Scan</span>
-                        ${d.links}
+                    <div class="section" style="background:#1c2128; padding:10px; border-radius:5px">
+                        <span class="label">Combat Personality (In-Char & SBA)</span>
+                        <p style="font-size:13px"><b>SBA:</b> ${d.sba}</p>
+                        <p style="font-size:13px"><b>Behavior:</b> ${d.inchar}</p>
                     </div>
-                `;
-            } else {
-                results.innerHTML = "<p style='text-align:center'>Data karakter belum di-riset. Berikan nama ke AI untuk di-index!</p>";
-            }
-        }
-    </script>
+                    <div class="section">
+                        <span class="label">Technical Stats (AP/Speed/Dura)</span>
+                        <p style="font-size:13px">
+                            <b>AP:</b> ${d.stats.ap}<br>
+                            <b>Speed:</b> ${d.stats.speed}<br>
+                            <b>Durability:</b> ${d.stats.dura}
+                        </p>
+                    </div>
+                    <div class="section">
+                        <span class="label">Abilities, Hax & Powers</span>
+                        <div class="hax-grid">${haxHtml}</div>
+                    </div>
+                    <div class="link-bar">
+                        <span class="label" style="width:100%">Valid Source & Proof Scans:</span>
+                        ${refHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        area.innerHTML = "<p style='text-align:center; color:red'>Karakter tidak ditemukan. Masukkan nama yang valid untuk di-crawl!</p>";
+    }
+}
+</script>
 </body>
 </html>
