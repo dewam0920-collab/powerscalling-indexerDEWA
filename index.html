@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -16,7 +15,7 @@
             padding: 20px;
             margin: 0;
         }
-        h1 { color: #58a6ff; margin-top: 50px; }
+        h1 { color: #58a6ff; margin-top: 50px; text-align: center; }
         .search-container {
             width: 100%;
             max-width: 500px;
@@ -45,37 +44,81 @@
         }
         button:hover { background-color: #2ea043; }
         .info {
+            width: 100%;
+            max-width: 500px;
             margin-top: 20px;
             font-size: 14px;
-            color: #8b949e;
-            text-align: center;
+            color: #c9d1d9;
         }
+        .result-box {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .result-box h3 { color: #58a6ff; margin-top: 0; text-transform: uppercase; }
+        .error-msg { color: #f85149; text-align: center; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <h1>Power-Scaling Indexer</h1>
-    <p>Database Feats, Calc, & Tiering Karakter</p>
+    <p style="text-align: center; color: #8b949e;">Database Feats, Calc, & Tiering Karakter</p>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Cari karakter (contoh: Akuto Sai, Makima)...">
+        <input type="text" id="searchInput" placeholder="Cari karakter (contoh: Makima, Jin Mori)...">
         <button onclick="searchCharacter()">Cari Data</button>
     </div>
 
     <div id="results" class="info">
-        Hasil pencarian akan muncul di sini.
-    </div>
+        </div>
 
     <script>
+        // INI ADALAH BANK DATA KAMU. 
+        // Kamu bisa menambah karakter baru di bawah ini nanti. Pastikan nama karakter pakai huruf kecil semua.
+        const databaseKarakter = {
+            "akuto sai": {
+                tier: "1-A (Outerverse level)",
+                feats: "Mengubah realitas, melampaui konsep ruang dan waktu.",
+                calc: "Kecepatan Immeasurable (tak terukur)."
+            },
+            "makima": {
+                tier: "7-C (Town level) secara fisik, Unknown dengan Hax",
+                feats: "Kontrol mental, transfer damage ke warga Jepang (Kontrak Perdana Menteri).",
+                calc: "Kecepatan Hypersonic+ (bereaksi terhadap serangan mendadak)."
+            },
+            "jin mori": {
+                tier: "Low 2-C (Universe level+)",
+                feats: "Mematikan alam semesta dengan tendangan, mengalahkan para dewa.",
+                calc: "Kecepatan MFTL+ (Jauh melebihi kecepatan cahaya)."
+            }
+        };
+
         function searchCharacter() {
-            const query = document.getElementById('searchInput').value;
+            // Mengambil teks dari kolom pencarian dan mengubahnya jadi huruf kecil
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const results = document.getElementById('results');
             
-            if(query) {
-                results.innerHTML = "Sedang mencari data untuk <b>" + query + "</b> di database...";
-                // Di sini nanti kita akan tanamkan logika mesin pencarinya
+            if(query !== "") {
+                // Mengecek apakah karakter yang dicari ada di dalam Bank Data
+                if(databaseKarakter[query]) {
+                    const data = databaseKarakter[query];
+                    // Menampilkan hasil dalam bentuk kotak yang rapi
+                    results.innerHTML = `
+                        <div class="result-box">
+                            <h3>${query}</h3>
+                            <p><b>Tier:</b> ${data.tier}</p>
+                            <p><b>Feats Utama:</b> ${data.feats}</p>
+                            <p><b>Hasil Calc:</b> ${data.calc}</p>
+                        </div>
+                    `;
+                } else {
+                    // Menampilkan pesan error jika karakter belum ada
+                    results.innerHTML = `<p class="error-msg">Karakter "${query}" belum tercatat di database. Silakan analisis dan tambahkan kodenya!</p>`;
+                }
             } else {
-                alert("Masukkan nama karakter dulu!");
+                alert("Kotak pencarian tidak boleh kosong!");
             }
         }
     </script>
