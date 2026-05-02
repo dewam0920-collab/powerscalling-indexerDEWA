@@ -1,63 +1,407 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dewa wiki - direktori karakter</title>
-    <style>
-        body { background-color: #0d1117; color: #c9d1d9; font-family: sans-serif; margin: 0; padding: 20px; }
-        h1 { color: #58a6ff; text-align: center; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
-        .abjad-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 20px 0; background: #161b22; padding: 15px; border-radius: 8px; border: 1px solid #30363d; }
-        .abjad-nav a { color: #58a6ff; text-decoration: none; font-weight: bold; font-size: 18px; padding: 5px 15px; background: #21262d; border-radius: 4px; }
-        .abjad-nav a:hover { background: #58a6ff; color: #0d1117; }
-        .char-list { max-width: 800px; margin: auto; background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; margin-bottom: 20px; }
-        .char-list h2 { color: #238636; border-bottom: 1px solid #30363d; padding-bottom: 5px; margin-top: 0; }
-        .char-list ul { list-style-type: none; padding: 0; }
-        .char-list li { margin: 12px 0; padding-left: 10px; border-left: 3px solid #58a6ff; }
-        .char-list a { color: #c9d1d9; text-decoration: none; font-size: 16px; font-weight: bold; }
-        .char-list a:hover { color: #58a6ff; text-decoration: underline; }
-        .kode-urut { color: #8b949e; font-size: 12px; margin-left: 5px; }
-    </style>
+    <title>DEATH BATTLE! Simulator</title>
+    <link rel="stylesheet" href="deathbattle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <h1>DEATH BATTLE!</h1>
+            <p>Rage, Wonder, Power!</p>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#matchups">Matchups</a></li>
+                <li><a href="#simulator">Simulator</a></li>
+                <li><a href="#tier-list">Tier List</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <div class="user-auth">
+            <button class="btn btn-login">Login</button>
+            <button class="btn btn-register">Register</button>
+        </div>
+    </header>
 
-    <h1>dewa wiki - power scaling index</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Who. Would. Win?</h2>
+            <p>Simulasikan Death Battle favoritmu dengan statistik akurat dan prediksi AI kami!</p>
+            <div class="search-box">
+                <input type="text" placeholder="Cari karakter...">
+                <button class="btn btn-search">Search</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="character-placeholder">
+                <span>Character</span>
+            </div>
+            <div class="vs-symbol">VS</div>
+            <div class="character-placeholder">
+                <span>Character</span>
+            </div>
+        </div>
+    </section>
 
-    <div class="abjad-nav">
-        <a href="#huruf-a">a</a>
-        <a href="#huruf-i">i</a>
-        <a href="#huruf-m">m</a>
-        <a href="#huruf-s">s</a>
-    </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Featured Matchup -->
+        <section class="featured-matchup">
+            <div class="matchup-header">
+                <h3>Featured Death Battle</h3>
+                <span class="tier-badge tier-s">S Tier</span>
+            </div>
+            <div class="matchup-card">
+                <div class="matchup-details">
+                    <h4>Superman vs Thor</h4>
+                    <p class="matchup-desc">Two of the most powerful heroes in their respective universes face off in this epic crossover!</p>
+                    <div class="matchup-stats">
+                        <div class="stat">
+                            <span class="stat-label">Power</span>
+                            <span class="stat-value">999</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Speed</span>
+                            <span class="stat-value">950</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Durability</span>
+                            <span class="stat-value">980</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Intelligence</span>
+                            <span class="stat-value">520</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-watch">Watch Battle</button>
+                    <button class="btn btn-simulate">Simulate Outcome</button>
+                </div>
+            </div>
+        </section>
 
-    <div class="char-list" id="huruf-a">
-        <h2>a</h2>
-        <ul>
-            <li><a href="anos.html">anos voldigoad</a> <span class="kode-urut">a1</span></li>
-            <li><a href="akuto.html">akuto sai</a> <span class="kode-urut">a2</span></li>
-        </ul>
-    </div>
+        <!-- Matchup List -->
+        <section class="matchup-list" id="matchups">
+            <h3>Recent Matchups</h3>
+            <div class="matchup-grid">
+                <!-- Matchup Item 1 -->
+                <div class="matchup-item">
+                    <img src="superman.jpg" alt="Superman" class="matchup-img">
+                    <div class="matchup-vs">
+                        <span>VS</span>
+                    </div>
+                    <img src="thor.jpg" alt="Thor" class="matchup-img">
+                    <div class="matchup-info">
+                        <h4>Superman vs Thor</h4>
+                        <p class="matchup-result">Winner: Superman (67%)</p>
+                        <div class="matchup-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-count">(1,234)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Matchup Item 2 -->
+                <div class="matchup-item">
+                    <img src="spiderman.jpg" alt="Spider-Man" class="matchup-img">
+                    <div class="matchup-vs">
+                        <span>VS</span>
+                    </div>
+                    <img src="wolverine.jpg" alt="Wolverine" class="matchup-img">
+                    <div class="matchup-info">
+                        <h4>Spider-Man vs Wolverine</h4>
+                        <p class="matchup-result">Winner: Wolverine (58%)</p>
+                        <div class="matchup-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">☆</span>
+                            <span class="rating-count">(892)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Matchup Item 3 -->
+                <div class="matchup-item">
+                    <img src="batman.jpg" alt="Batman" class="matchup-img">
+                    <div class="matchup-vs">
+                        <span>VS</span>
+                    </div>
+                    <img src="deadpool.jpg" alt="Deadpool" class="matchup-img">
+                    <div class="matchup-info">
+                        <h4>Batman vs Deadpool</h4>
+                        <p class="matchup-result">Winner: Batman (62%)</p>
+                        <div class="matchup-rating">
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">★</span>
+                            <span class="rating-star">☆</span>
+                            <span class="rating-count">(1,567)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="char-list" id="huruf-i">
-        <h2>i</h2>
-        <ul>
-            <li><a href="izanakurokawa.html">izana kurokawa</a> <span class="kode-urut">i1</span></li>
-        </ul>
-    </div>
+        <!-- Simulator Section -->
+        <section class="simulator-section" id="simulator">
+            <h3>Death Battle Simulator</h3>
+            <p>Atur variabel dan lihat siapa yang akan menang!</p>
+            <div class="simulator-container">
+                <div class="simulator-form">
+                    <div class="character-select">
+                        <label>Character 1:</label>
+                        <select id="char1">
+                            <option value="superman">Superman</option>
+                            <option value="thor">Thor</option>
+                            <option value="spiderman">Spider-Man</option>
+                            <option value="wolverine">Wolverine</option>
+                            <option value="batman">Batman</option>
+                            <option value="deadpool">Deadpool</option>
+                        </select>
+                        <div class="character-stats">
+                            <span>Power: <span id="power1">999</span></span>
+                            <span>Speed: <span id="speed1">950</span></span>
+                            <span>Durability: <span id="durability1">980</span></span>
+                            <span>Intelligence: <span id="intel1">520</span></span>
+                        </div>
+                    </div>
+                    <div class="character-select">
+                        <label>Character 2:</label>
+                        <select id="char2">
+                            <option value="superman">Superman</option>
+                            <option value="thor">Thor</option>
+                            <option value="spiderman">Spider-Man</option>
+                            <option value="wolverine">Wolverine</option>
+                            <option value="batman">Batman</option>
+                            <option value="deadpool">Deadpool</option>
+                        </select>
+                        <div class="character-stats">
+                            <span>Power: <span id="power2">999</span></span>
+                            <span>Speed: <span id="speed2">950</span></span>
+                            <span>Durability: <span id="durability2">980</span></span>
+                            <span>Intelligence: <span id="intel2">520</span></span>
+                        </div>
+                    </div>
+                    <div class="environment-select">
+                        <label>Environment:</label>
+                        <select id="environment">
+                            <option value="urban">Urban City</option>
+                            <option value="forest">Forest</option>
+                            <option value="ocean">Ocean</option>
+                            <option value="space">Space</option>
+                        </select>
+                    </div>
+                    <div class="difficulty-select">
+                        <label>Difficulty:</label>
+                        <select id="difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="normal">Normal</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-simulate" onclick="simulateBattle()">Simulate Battle</button>
+                </div>
+                <div class="simulation-result">
+                    <h4>Simulation Result</h4>
+                    <div class="result-container">
+                        <div class="winner-banner">
+                            <span id="winner">No Winner</span>
+                        </div>
+                        <div class="probability-chart">
+                            <div class="chart-bar char1-bar">
+                                <span>Character 1: <span id="prob1">50</span>%</span>
+                            </div>
+                            <div class="chart-bar char2-bar">
+                                <span>Character 2: <span id="prob2">50</span>%</span>
+                            </div>
+                        </div>
+                        <div class="result-details">
+                            <p id="result-desc">Simulation results will appear here.</p>
+                            <div id="rounds-container" class="rounds-container">
+                                <!-- Round results will be added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="char-list" id="huruf-m">
-        <h2>m</h2>
-        <ul>
-            <li><a href="makima.html">makima</a> <span class="kode-urut">m1</span></li>
-        </ul>
-    </div>
+        <!-- Tier List -->
+        <section class="tier-list-section" id="tier-list">
+            <h3>Character Tier List</h3>
+            <p>Berikut ranking karakter berdasarkan power level mereka!</p>
+            <div class="tier-grid">
+                <div class="tier-tier tier-s">
+                    <div class="tier-header">
+                        <span class="tier-badge tier-s">S Tier</span>
+                        <span class="tier-count">3 characters</span>
+                    </div>
+                    <div class="tier-list">
+                        <div class="tier-character">
+                            <img src="superman.jpg" alt="Superman" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Superman</span>
+                                <span class="tier-power">999</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="thor.jpg" alt="Thor" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Thor</span>
+                                <span class="tier-power">980</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="zoom.jpg" alt="Zoom" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Zoom</span>
+                                <span class="tier-power">970</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tier-tier tier-a">
+                    <div class="tier-header">
+                        <span class="tier-badge tier-a">A Tier</span>
+                        <span class="tier-count">5 characters</span>
+                    </div>
+                    <div class="tier-list">
+                        <div class="tier-character">
+                            <img src="spiderman.jpg" alt="Spider-Man" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Spider-Man</span>
+                                <span class="tier-power">850</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="deadpool.jpg" alt="Deadpool" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Deadpool</span>
+                                <span class="tier-power">820</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="batman.jpg" alt="Batman" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Batman</span>
+                                <span class="tier-power">780</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="wolverine.jpg" alt="Wolverine" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Wolverine</span>
+                                <span class="tier-power">760</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="flash.jpg" alt="Flash" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Flash</span>
+                                <span class="tier-power">750</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tier-tier tier-b">
+                    <div class="tier-header">
+                        <span class="tier-badge tier-b">B Tier</span>
+                        <span class="tier-count">8 characters</span>
+                    </div>
+                    <div class="tier-list">
+                        <div class="tier-character">
+                            <img src="ironman.jpg" alt="Iron Man" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Iron Man</span>
+                                <span class="tier-power">700</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="cap.jpg" alt="Captain America" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Captain America</span>
+                                <span class="tier-power">680</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="hulk.jpg" alt="Hulk" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Hulk</span>
+                                <span class="tier-power">670</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="blackpanther.jpg" alt="Black Panther" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Black Panther</span>
+                                <span class="tier-power">650</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="vision.jpg" alt="Vision" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Vision</span>
+                                <span class="tier-power">640</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="cyborg.jpg" alt="Cyborg" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Cyborg</span>
+                                <span class="tier-power">630</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="aquaman.jpg" alt="Aquaman" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Aquaman</span>
+                                <span class="tier-power">620</span>
+                            </div>
+                        </div>
+                        <div class="tier-character">
+                            <img src="warrior.jpg" alt="Wonder Woman" class="tier-img">
+                            <div class="tier-info">
+                                <span class="tier-name">Wonder Woman</span>
+                                <span class="tier-power">610</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="char-list" id="huruf-s">
-        <h2>s</h2>
-        <ul>
-            <li><a href="surfer.html">silver surfer</a> <span class="kode-urut">s1</span></li>
-        </ul>
-    </div>
-
-</body>
-</html>
+        <!-- News Section -->
+        <section class="news-section" id="news">
+            <h3>Latest News</h3>
+            <div class="news-grid">
+                <div class="news-item">
+                    <div class="news-image">
+                        <img src="superman-thor-news.jpg" alt="Superman vs Thor News">
+                    </div>
+                    <div class="news-content">
+                        <h4>Superman vs Thor: The Ultimate Showdown</h4>
+                        <p class="news-date">May 2, 2026</p>
+                        <p class="news-excerpt">The long-awaited battle between two of the most powerful heroes is finally here! Watch as Superman and Thor go head to head in this epic crossover event.</p>
+                        <a href="#" class="news-link">Read More</a>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-image">
+                        <img src="spider-wolverine-news.jpg" alt="Spider-Man vs Wolverine News">
+                    </div>
+                    <div class="news-content">
+                        <h4>Spider-Man vs Wolverine: Who Will Win?</h4>
+                        <p class="news-date">April 28, 2026</p>
+                        <p class="news-excerpt">The web-slinger faces off against the berserker mutant in this intense battle. Find out who comes out on top!</p>
+                        <
